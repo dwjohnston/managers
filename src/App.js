@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-
 import EvalTextArea from './EvalTextArea/EvalTextArea';
 import './App.css';
-
-
-import { getEmployeeIndex } from "./Employee";
+import { getEmployeeIndex } from "./model/Employee";
 
 const EmployeeRender = ({ employee, children }) => {
   return (<div className="employee">
@@ -27,8 +24,6 @@ class App extends Component {
   }
 
   getData = (data) => {
-    console.log(data);
-
     this.setState({
       employeeData: getEmployeeIndex(data)
     });
@@ -37,14 +32,13 @@ class App extends Component {
 
   renderEmployeeTree = (emp) => {
     if (emp) return (
-
-        <EmployeeRender employee={emp}>
-          <div className="subordinates">
-            <label>Direct Reports:</label>
-            {emp.subordinates.map(e => this.renderEmployeeTree(e))}
-            {emp.subordinates.length === 0 && <span>(none)</span>}
-          </div>
-        </EmployeeRender>
+      <EmployeeRender employee={emp}>
+        <div className="subordinates">
+          <label>Direct Reports:</label>
+          {emp.subordinates.map(e => this.renderEmployeeTree(e))}
+          {emp.subordinates.length === 0 && <span>(none)</span>}
+        </div>
+      </EmployeeRender>
     );
   }
 
@@ -60,18 +54,12 @@ class App extends Component {
     return (
       <div className="App">
         <EvalTextArea onSubmit={this.getData} />
-
-
         <div>
           <h3> Employees </h3>
-          {this.state.employeeData && this.renderEmployeeTree(this.state.employeeData.ceoList[0])}
+          {this.state.employeeData && this.renderEmployeeTree(this.state.employeeData.ceoList[0])}  {/* or we could render multiple CEOS*/}
         </div>
 
-
-
         {this.state.employeeData && this.renderErrorEmployees(this.state.employeeData.errorList)}
-
-
       </div>
     );
   }
