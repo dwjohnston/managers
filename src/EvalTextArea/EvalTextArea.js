@@ -17,6 +17,8 @@ const rawData = [
   { name: "Dupe3", id: 191, managerId: 100 }, 
   { name: null, id: 193, managerId: 100 }, 
   { name: "No-Id", id: null, managerId: 100 }, 
+  { name: "Circular 1", id: 11, managerId: 12 }, 
+  { name: "Circular 2", id: 12, managerId: 11 }, 
 ];
 
 class EvalTextArea extends Component {

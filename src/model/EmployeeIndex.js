@@ -105,4 +105,12 @@ export class EmployeeIndex {
         this.parseHierarchy();
 
     }
+
+    getData() {
+        return {
+            ceoList: this.ceoList, 
+            index: this.index, 
+            errorList: this.errorList
+        }
+    }
 }
