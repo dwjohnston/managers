@@ -40,6 +40,7 @@ class EvalTextArea extends Component {
         this.setState({
           error: null, 
         });
+
         this.props.onSubmit(data); 
       }
       catch(error){
