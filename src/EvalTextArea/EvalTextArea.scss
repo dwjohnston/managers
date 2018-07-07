@@ -1,0 +1,20 @@
+
+.EvalTextArea {
+    padding: 1em;
+
+    p {
+        color: red; 
+        padding: 1em;
+        min-height: 3em;
+    }
+    
+    textarea, p, button {
+        display: block;
+        margin: 0 auto; 
+    }
+    
+    textarea {
+        width: 30em;
+    }
+    
+}

@@ -1,0 +1,28 @@
+.App {
+  padding: 2em; }
+
+.employee {
+  border: solid 1px black;
+  padding: 1em;
+  margin: 1em;
+  flex: 0 1 auto; }
+  .employee .employee-name {
+    font-weight: bold;
+    font-size: 1.4em; }
+
+.subordinates {
+  display: flex;
+  flex-flow: row wrap; }
+  .subordinates label {
+    flex: 1 0 100%;
+    font-weight: bold; }
+
+.error-employees {
+  color: red;
+  border: solid 1px red;
+  padding: 1em;
+  margin: 1em;
+  display: flex;
+  flex-flow: row wrap; }
+  .error-employees h3, .error-employees > p {
+    flex: 1 0 100%; }
