@@ -3,27 +3,7 @@ import EvalTextArea from './EvalTextArea/EvalTextArea';
 import './App.css';
 import {EmployeeIndex} from "./model/EmployeeIndex";
 import {EmployeeErrorStatusEnum} from "./model/Employee"
-
-const statusSwitch = (emp) => {
-  switch (emp.errorStatus) {
-    case EmployeeErrorStatusEnum.OK: return "Ok"; 
-    case EmployeeErrorStatusEnum.CONFLICTED: return `Non-unique ID ${emp.id}`;  
-    case EmployeeErrorStatusEnum.CIRCULAR: return `Circular management heirarchy. (Manager id = ${emp.managerId})`; 
-    case EmployeeErrorStatusEnum.NO_ID: return "No id."; 
-    case EmployeeErrorStatusEnum.NO_NAME: return "No name."
-    case EmployeeErrorStatusEnum.MANAGER_DOES_NOT_EXIST: return `Manager with id ${emp.managerId} does not exist`;
-  }
-}
-
-const EmployeeRender = ({ employee, children }) => {
-  return (<div className="employee">
-    <p className="employee-name"> {`${employee.name} (${employee.id})`}</p>
-
-    {employee.errorStatus>0 && <p>{statusSwitch(employee)}</p>}
-
-    {children}
-  </div>);
-}
+import {EmployeeRender} from "./Employee"; 
 
 class App extends Component {
 

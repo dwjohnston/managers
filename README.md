@@ -37,11 +37,40 @@ For convienience I created a `EvalTextArea` react component to import the raw js
 
 ## Model 
 
-`Employee` - A plain data containing object to represent all employees. 
+### Employee
 
-`EmployeeIndex` - A data container that contains an `employeeId:Employee` index of employees, and an array of CEOs (employees without managers), and an array of employess with invalid status. 
+A plain data containing object to represent all employees.
 
-`EmployeeErrorStatusEnum` an enum representing the valid (0) or invalid states an employee can have. Those states are: 
+**Constructor** 
+- `Employee(obj)` - Create an employee from JSON.  
+
+**Fields** 
+ 
+- `name`- name of the employee
+- `id` - unique id for the employee
+- `managerId` - id of the employee's manager. If null, the - employee is considered a CEO.
+- `manager` - reference to the `Employee` object of the employees manager. 
+- `subordinates` - an array of references to the employee's subordinate `Employee` references. 
+- `errorStatus` - of type `EmployeeErrorStatusEnum`
+
+### EmployeeIndex
+
+ A data container used to index `Employee`s, and to parse the heirarchy tree for validity. 
+
+**Fields**
+
+- `index` - a `employeeId : Employee` mapping of Employees
+- `ceoList` - An array of all employees with `managerId=null` - considered CEOs
+- `errorList` - An array of all employees with some kind of invalid status. 
+
+**Methods** 
+
+- `addEmployee(employee)` - Add an employee to the index. At this point 
+- `parseHeirarchy()` - For all given Employees on the index - create references to their manager and subordinates. 
+- `populateFromJson(json)` - a conveinience method that takes a JSON list and adds all employees, and parses the heirarchy. 
+
+### EmployeeErrorStatusEnum
+ A enum representing the valid (0) or invalid states an employee can have. Those states are: 
 ```
     OK: 0,
     NO_ID: 1,
