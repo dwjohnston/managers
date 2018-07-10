@@ -72,6 +72,11 @@ export class EmployeeIndex {
             let seenManagerIds = new Set();
             while (emp.manager !== null) {
                 emp = emp.manager;
+
+                if (circularEmployeesToRemove.has(emp.id)){
+                    break; //We've already scanned this circular loop. 
+                }
+
                 if (seenManagerIds.has(emp.id)) {
                     seenManagerIds.forEach(v => {
                         circularEmployeesToRemove.add(v);
