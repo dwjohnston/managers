@@ -16,6 +16,8 @@ Run tests with
 npm run test
 ```
 
+- There are tests on the model objects, and the `EvalTextArea` react component. 
+
 ## Overview. 
 
 I chose a JSON array as the data format for the original data. 
@@ -65,8 +67,8 @@ A plain data containing object to represent all employees.
 
 **Methods** 
 
-- `addEmployee(employee)` - Add an employee to the index. At this point 
-- `parseHeirarchy()` - For all given Employees on the index - create references to their manager and subordinates. 
+- `addEmployee(employee)` - Add an employee to the index. At this point `NO_NAME`, `CONFLICTED` and`NO_ID` employees will be added to the error list. 
+- `parseHeirarchy()` - For all given Employees on the index - create references to their manager and subordinates. At this point `MANAGER_DOES_NOT_EXIST` and `CIRCULAR` employees will be added to the errorList. 
 - `populateFromJson(json)` - a conveinience method that takes a JSON list and adds all employees, and parses the heirarchy. 
 
 ### EmployeeErrorStatusEnum
